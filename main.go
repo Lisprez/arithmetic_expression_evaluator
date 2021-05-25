@@ -142,10 +142,19 @@ func parse_E(units []unit) (*Expresstion, []unit) {
         return &Expresstion{op:"", left:pterm, right: nil}, rest_units
     }
 
-    if rest_units[0].eletype == "ET_OP" && (rest_units[0].lit == "+" || rest_units[0].lit == "-") {
+    if rest_units[0].eletype == "ET_OP" && (rest_units[0].lit == "+") {
         prightExpress, rest_units1 = parse_E(rest_units[1:])
         log.Printf("Exit parse_E, rest_units = %v\n", rest_units)
         return &Expresstion{op:rest_units[0].lit, left: pterm, right: prightExpress}, rest_units1
+    } else if rest_units[0].eletype == "ET_OP" && (rest_units[0].lit == "-") {
+        prightTerm, rest_units2 := parse_T(rest_units[1:])
+        fuckExpresstion := &Expresstion{op:"", left: prightTerm, right: nil}
+        totalLeft := &Expresstion{op:rest_units[0].lit, left: pterm, right: fuckExpresstion}
+        finalFctor := &Factor{kind: 1, val: 0, quotedExpresstion: totalLeft}
+        finalTerm := &Term{op:"", left: finalFctor, right: nil}
+
+        ptotalTerm, rest_final := parse_E(rest_units2[1:])
+        return &Expresstion{op:rest_units2[0].lit, left: finalTerm, right: ptotalTerm}, rest_final
     } else {
         log.Printf("Error parse_E, rest_units = %v\n", rest_units)
         return &Expresstion{op:"", left: pterm, right: nil}, rest_units
@@ -212,7 +221,7 @@ func parse_F(units []unit) (*Factor, []unit) {
 func main() {
     log.SetFlags(log.LstdFlags | log.Lshortfile)
 
-    units := generate_units("11-1+1")
+    units := generate_units("1-(2+5)*(11-1+1)")
     pexpresstion, rest_units := parse_E(units)
     fmt.Printf("%v, %v\n", *pexpresstion, rest_units)
     fmt.Printf("eval result = %v\n", pexpresstion.value())
