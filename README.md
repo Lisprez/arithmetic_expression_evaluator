@@ -52,6 +52,6 @@ Durante este tiempo, necesito dar clases particulares a un estudiante de cuarto 
 Le linn na tréimhse seo, caithfidh mé teagasc a thabhairt do mhac léinn sa cheathrú grád den bhunscoil chun cláir a fhoghlaim. Is obair bhaile é an clár beag seo chun ceithre nathanna uimhríochta a mheas chun a lámha a chleachtadh. Lig dó teanga cláir a roghnú faoi shaoirse chun í a chur i bhfeidhm. Sa deireadh, roghnaigh sé an teanga Go a úsáid chun í a chur i bhfeidhm. Ar mo mhoill, chuir sé an obair bhaile i gcrích i gceann 50 nóiméad.
 
 ---
-analizzatore di espressioni aritmetiche
+# analizzatore di espressioni aritmetiche
 
 Durante questo periodo, ho bisogno di fare da tutor a uno studente della quarta elementare per imparare a programmare. Questo piccolo programma per valutare quattro espressioni aritmetiche è un compito assegnatogli per esercitarsi con le mani. Permettigli di scegliere liberamente un linguaggio di programmazione per implementarlo. Alla fine, ha scelto di utilizzare il linguaggio Go per implementarlo. Su mia richiesta, ha finalmente completato i compiti in 50 minuti.
